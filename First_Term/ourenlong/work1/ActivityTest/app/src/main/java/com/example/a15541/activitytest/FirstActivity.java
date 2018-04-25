@@ -1,6 +1,7 @@
 package com.example.a15541.activitytest;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,22 +17,34 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
         Button button1=(Button) findViewById(R.id.button_l);
-        button1.setOnClickListener(new View.OnClickListener(){
+        button1.setOnClickListener(new View.OnClickListener() {//
             @Override
-            public void onClick(View v){
-                Toast.makeText(FirstActivity.this,"you clicked Button1",
-                        Toast.LENGTH_SHORT).show();
-                //隐式
-                Intent intent=new Intent("com.example.activitytest.ACTION_START");
-                intent.addCategory("com.example.activitytest.MY_CATEGORY");
-
-                //显式  Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+            public void onClick(View v) {
+                String data ="Hello SecondActivity";
+                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                intent.putExtra("extra_data",data);
                 startActivity(intent);
-
             }
         });
+//    跳转    button1.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Toast.makeText(FirstActivity.this,"you clicked Button1",
+//                        Toast.LENGTH_SHORT).show();
+//                //隐式
+//              //  Intent intent=new Intent(Intent.ACTION_DIAL);
+//             //   intent.setData(Uri.parse("tel:10086"));
+//              //  intent.addCategory("com.example.activitytest.MY_CATEGORY");
+//
+//                //显式  Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+//                /
+//
+//                startActivity(intent);
+//
+//            }
+//        });
     }
-    public boolean onCcrateOpyionMenu(Menu menu){
+    public boolean onCcrateOpyionMenu(Menu menu){//菜单
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
